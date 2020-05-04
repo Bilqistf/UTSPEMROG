@@ -7,13 +7,4 @@ module.exports=function(app){
     app.route('/tampil')
     .get(jsonku.tampilsemuamontir);
 
-    app.route('/tampilsp')
-    .get(jsonku.tampilsemuasparepart);
-
-    app.route('/tampil/:id')
-    .get(jsonku.tampilberdasarkanidmontir);
-
-    app.route('/tampilsp/:id')
-    .get(jsonku.tampilberdasarkanidsparepart);
-
 }
