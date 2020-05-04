@@ -3,7 +3,7 @@ const config = require('../config/secret');
 
 function verifikasi(){
     return function(req, rest, next){
-        var role = req.body.role;
+        var level = req.body.level;
         //cek authorizzation header
         var tokenWithBearer = req.headers.authorization;
         if(tokenWithBearer) {
@@ -18,7 +18,7 @@ function verifikasi(){
                         req.auth = decoded;
                         next();
                     }else {
-                        return rest.status(401).send({auth:false, message:'Gagal mengotorisasi role anda!'});
+                        return rest.status(401).send({auth:false, message:'Gagal mengotorisasi level anda!'});
                     }
                 }
             });
