@@ -24,5 +24,6 @@ router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuser);
 //menambahkan level
 router.post('/api/v1/tambahlevel',verifikasi(), auth.tambahlevel);
+router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 
 module.exports = router;
