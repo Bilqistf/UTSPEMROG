@@ -422,7 +422,7 @@ exports.hapusservis = function(req, res){
         if (error) {
             console.log(error);
         } else {
-            response.ok("Berhasil Hapus Data", res)
+            response.ok("Berhasil Hapus Data servis", res)
         }
     });
 };

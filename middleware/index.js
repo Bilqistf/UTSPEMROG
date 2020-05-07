@@ -13,6 +13,8 @@ router.get('/api/v1/rahasia1', verifikasi(), auth.halamanrahasia1);
 //menambahkan data t_service
 router.post('/api/v1/tambahdataservice',verifikasi(),auth.tambahdataservice);
 router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
+router.delete('/api/v1/hapusservis',verifikasi(), auth.hapusservis);
+
 //menambahkan & mengubah & menghapus data montir
 router.post('/api/v1/inputmontir',verifikasi(), auth.inputmontir);
 router.put('/api/v1/ubahmontir',verifikasi(), auth.ubahmontir);
