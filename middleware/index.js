@@ -18,6 +18,7 @@ router.post('/api/v1/inputmontir',verifikasi(), auth.inputmontir);
 router.put('/api/v1/ubahmontir',verifikasi(), auth.ubahmontir);
 //menambahkan data sparepart
 router.post('/api/v1/tambahsparepart',verifikasi(), auth.tambahsparepart);
+router.put('/api/v1/ubahsparepart',verifikasi(), auth.ubahsparepart);
 //menambahkan data user
 router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 //menambahkan level
