@@ -375,6 +375,19 @@ exports.hapusmontir = function(req, res){
     });
 };
 
+//Menghapus data sparepart berdasarkan id
+exports.hapussparepart = function(req, res){
+    var id = req.body.id_sparepart;
+    connection.query('DELETE FROM t_sparepart WHERE id_sparepart=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data Sparepart", res)
+        }
+    });
+};
+
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }

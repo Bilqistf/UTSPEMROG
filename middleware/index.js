@@ -21,7 +21,7 @@ router.delete('/api/v1/hapusmontir',verifikasi(), auth.hapusmontir);
 //menambahkan & mengubah & menghapus data sparepart
 router.post('/api/v1/tambahsparepart',verifikasi(), auth.tambahsparepart);
 router.put('/api/v1/ubahsparepart',verifikasi(), auth.ubahsparepart);
-
+router.delete('/api/v1/hapussparepart',verifikasi(), auth.hapussparepart);
 
 //menambahkan & mengubah & menghapus data user
 router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
