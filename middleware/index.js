@@ -26,7 +26,7 @@ router.delete('/api/v1/hapussparepart',verifikasi(), auth.hapussparepart);
 //menambahkan & mengubah & menghapus data user
 router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuser);
-
+router.delete('/api/v1/hapususer',verifikasi(), auth.hapususer);
 
 //menambahkan & mengubah & menghapus level
 router.post('/api/v1/tambahlevel',verifikasi(), auth.tambahlevel);

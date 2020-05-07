@@ -388,6 +388,21 @@ exports.hapussparepart = function(req, res){
     });
 };
 
+//menghapus data user berdasarkan id
+exports.hapususer = function(req, res){
+    var id = req.body.id_user;
+    connection.query('DELETE FROM t_user WHERE id_user=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data User", res)
+        }
+    });
+};
+
+
+
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }
