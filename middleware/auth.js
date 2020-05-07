@@ -201,6 +201,75 @@ exports.tambahsparepart = function(req, res) {
     });
 };
 
+//controller untuk user
+exports.tambahuser = function(req,res) {
+    var post = {
+        nama_user: req.body.nama_user,
+        email: req.body.email,
+        password: md5(req.body.password),
+        level: req.body.level,
+        tanggal_daftar: new Date()
+    }
+
+    var query = "SELECT nama_user FROM ?? WHERE ??=?";
+    var table = ["t_user", "nama_user", post.nama_user];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error, rows) {
+        if(error){
+            console.log(error);
+        }else {
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_user"];
+                query = mysql.format(query, table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else {
+                        response.ok("Berhasil menambahkan data user baru", res);
+                    }
+                });
+            }else {
+                response.ok("user sudah terdaftar!",res);
+            }
+        }
+    })
+}
+
+//controller untuk input data level
+exports.tambahlevel = function(req, res) {
+    var post = {
+        nama_level: req.body.nama_level
+    }
+
+    var query = "SELECT nama_level FROM ?? WHERE ??=?";
+    var table = ["t_level", "nama_level", post.nama_level];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_level"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data level baru", res);
+                    }
+                });
+            }else{
+                response.ok("Level sudah terdaftar!",res);
+            }
+        }
+    });
+};
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }
