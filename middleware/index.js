@@ -9,4 +9,7 @@ router.post('/api/v1/login', auth.login);
 //alamat yang perlu otorisasi
 router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia);
 
+//menambahkan data t_service
+router.post('/api/v1/register',auth.tambahdataservice);
+
 module.exports = router;
