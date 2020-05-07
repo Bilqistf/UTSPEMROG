@@ -342,6 +342,25 @@ exports.ubahlevel = function (req, res) {
         });
 };
 
+//mengubah data di tabel service
+exports.ubahservis = function (req, res) {
+    var tgl_servis = new Date();
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepart = req.body.jumlah_sparepart;
+    var id_sparepart = req.body.id_sparepart;
+    var id_servis = req.body.id_servis;
+    
+    connection.query('UPDATE t_service SET tgl_servis=?, id_user=?, id_montir=?, jumlah_sparepart=?, id_sparepart=? WHERE id_servis=?',
+        [ tgl_servis, id_user, id_montir, jumlah_sparepart, id_sparepart,id_servis], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data servis", res)
+            }
+        });
+};
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }
