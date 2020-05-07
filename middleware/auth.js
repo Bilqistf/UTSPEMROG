@@ -301,7 +301,27 @@ exports.ubahsparepart = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Berhasil Mengubah Data", res)
+                response.ok("Berhasil Mengubah Data Sparepart", res)
+            }
+        });
+};
+
+//mengubah data di tabel User
+exports.ubahuser = function (req, res) {
+    var id_user = req.body.id_user;
+    var nama_user = req.body.nama_user;
+    var email = req.body.email;
+    var password = md5(req.body.password);
+    var level = req.body.level;
+    var tanggal_daftar = req.body.tanggal_daftar;
+
+    connection.query('UPDATE t_user SET nama_user=?, email=?, password=?, level=? , tanggal_daftar=? WHERE id_user=?',
+        [nama_user, email, password, level,tanggal_daftar,id_user], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data user", res)
             }
         });
 };
