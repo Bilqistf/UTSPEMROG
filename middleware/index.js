@@ -10,6 +10,6 @@ router.post('/api/v1/login', auth.login);
 router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia);
 
 //menambahkan data t_service
-router.post('/api/v1/register',auth.tambahdataservice);
+router.post('/api/v1/tambahdataservice',verifikasi(),auth.tambahdataservice);
 
 module.exports = router;

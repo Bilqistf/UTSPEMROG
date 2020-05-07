@@ -95,29 +95,41 @@ exports.login = function(req,res){
 //menambahkan data service
 exports.tambahdataservice = function (req, res) {
     var post = {
-     tgl_service: new Date(),
+     tgl_servis: new Date(),
      id_user: req.body.id_user,
      id_montir: req.body.id_montir,
      jumlah_sparepart: req.body.jumlah_sparepart,	
-     id_sparepart: req.body.id_sparepart,
-     jam_service: req.body.jam_service
+     id_sparepart: req.body.id_sparepart
      
     }
-    var query = "INSERT INTO ?? SET ?";
-    var table = ["t_service"];
- 
-    query = mysql.format(query, table);
-     connection.query(query, post, function (error, rows) {
-             if (error) {
-                 console.log(error);
-             } else {
-                 response.ok("Berhasil Menambahkan Data", res)
-             }
-         });
- };
+      var query = "SELECT tgl_servis FROM ?? WHERE ??=?";
+    var table = ["t_service", "tgl_servis", post.tgl_service];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_service"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Servis baru", res);
+                    }
+                });
+            }else{
+                response.ok("Servis sudah terdaftar!",res);
+            }
+        }
+    });
+};
 
 
 exports.halamanrahasia = function(req,res){
     response.ok("Halaman ini hanya untuk user dengan role = 2!",res);
 }
-
