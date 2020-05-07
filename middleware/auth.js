@@ -166,6 +166,41 @@ exports.inputmontir = function(req, res) {
     });
 };
 
+//controller untuk input data sparepart
+exports.tambahsparepart = function(req, res) {
+    var post = {
+        nama_sparepart: req.body.nama_sparepart,
+        harga_sparepart: req.body.harga_sparepart,
+        satuan: req.body.satuan
+    }
+
+    var query = "SELECT nama_sparepart FROM ?? WHERE ??=?";
+    var table = ["t_sparepart", "nama_sparepart", post.nama_sparepart];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_sparepart"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Sparepart baru", res);
+                    }
+                });
+            }else{
+                response.ok("Sparepart sudah terdaftar!",res);
+            }
+        }
+    });
+};
+
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }

@@ -15,4 +15,6 @@ router.post('/api/v1/tambahdataservice',verifikasi(),auth.tambahdataservice);
 
 //menambahkan data montir
 router.post('/api/v1/inputmontir',verifikasi(), auth.inputmontir);
+//menambahkan data sparepart
+router.post('/api/v1/tambahsparepart',verifikasi(), auth.tambahsparepart);
 module.exports = router;
