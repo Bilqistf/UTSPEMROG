@@ -401,7 +401,31 @@ exports.hapususer = function(req, res){
     });
 };
 
+//menghaous data level berdasarkan id
+exports.hapusLevel = function(req, res){
+    var id = req.body.id_level;
+    connection.query('DELETE FROM t_level WHERE id_level=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data Level", res)
+        }
+    });
+};
 
+//menghapus dat tabell servis
+exports.hapusservis = function(req, res){
+    var id = req.body.id_servis;
+    connection.query('DELETE FROM t_service WHERE id_servis=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data", res)
+        }
+    });
+};
 
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);

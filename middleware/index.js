@@ -31,7 +31,7 @@ router.delete('/api/v1/hapususer',verifikasi(), auth.hapususer);
 //menambahkan & mengubah & menghapus level
 router.post('/api/v1/tambahlevel',verifikasi(), auth.tambahlevel);
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
-
+router.delete('/api/v1/hapusLevel',verifikasi(), auth.hapusLevel);
 
 
 module.exports = router;
