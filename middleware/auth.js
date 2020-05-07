@@ -361,6 +361,20 @@ exports.ubahservis = function (req, res) {
             }
         });
 };
+
+//Menghapus data montir
+exports.hapusmontir = function(req, res){
+    var id = req.body.id_montir;
+    connection.query('DELETE FROM t_montir WHERE id_montir=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data montir", res)
+        }
+    });
+};
+
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }
