@@ -18,8 +18,11 @@ function verifikasi(){
                         req.auth = decoded;
                         next();
                     }
-                    else {
-                        return rest.status(401).send({auth:false, message:'Gagal mengotorisasi level anda!'});
+                    else if(lvl == 1){
+                        req.auth = decoded;
+                        next();
+                    }else {
+                        return rest.status(401).send({auth:false, message:'Gagal mengotorisasi lvl anda!'});
                     }
                 }
             });
@@ -28,6 +31,5 @@ function verifikasi(){
         }
     }
 }
-
 
 module.exports = verifikasi;
