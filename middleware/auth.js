@@ -92,6 +92,10 @@ exports.login = function(req,res){
         }
     });
 }
+exports.halamanrahasia = function(req,res){
+    response.ok("Halaman ini hanya untuk user dengan role = 2!",res);
+}
+
 //menambahkan data service
 exports.tambahdataservice = function (req, res) {
     var post = {
@@ -131,12 +135,12 @@ exports.tambahdataservice = function (req, res) {
 //controller untuk input data montir
 exports.inputmontir = function(req, res) {
     var post = {
-        nama_montir: req.body.nama_montir,
+        Nama_montir: req.body.Nama_montir,
         harga_perjam: req.body.harga_perjam
     }
 
     var query = "SELECT nama_montir FROM ?? WHERE ??=?";
-    var table = ["t_montir", "nama_montir", post.nama_montir];
+    var table = ["t_montir", "Nama_montir", post.Nama_montir];
 
     query = mysql.format(query,table);
 
@@ -164,7 +168,4 @@ exports.inputmontir = function(req, res) {
 
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
-}
-exports.halamanrahasia = function(req,res){
-    response.ok("Halaman ini hanya untuk user dengan role = 2!",res);
 }
