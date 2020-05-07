@@ -13,8 +13,9 @@ router.get('/api/v1/rahasia1', verifikasi(), auth.halamanrahasia1);
 //menambahkan data t_service
 router.post('/api/v1/tambahdataservice',verifikasi(),auth.tambahdataservice);
 
-//menambahkan data montir
+//menambahkan & mengubah data montir
 router.post('/api/v1/inputmontir',verifikasi(), auth.inputmontir);
+router.put('/api/v1/ubahmontir',verifikasi(), auth.ubahmontir);
 //menambahkan data sparepart
 router.post('/api/v1/tambahsparepart',verifikasi(), auth.tambahsparepart);
 //menambahkan data user

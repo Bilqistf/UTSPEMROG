@@ -270,6 +270,25 @@ exports.tambahlevel = function(req, res) {
         }
     });
 };
+
+//mengubah data di tabel montir
+exports.ubahmontir = function (req, res) {
+    var id_montir = req.body.id_montir;
+    var Nama_montir = req.body.nama_montir;
+    var harga_perjam = req.body.harga_perjam;
+
+    connection.query('UPDATE t_montir SET Nama_montir=?, harga_perjam=? WHERE id_montir=?', 
+    [id_montir, Nama_montir, harga_perjam,],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Ubah Data Montir", res)
+            }
+        });
+};
+
+
 exports.halamanrahasia1 = function (req, res) {
     response.ok("Halaman ini hanya untuk admin dengan level = 1!", res);
 }
